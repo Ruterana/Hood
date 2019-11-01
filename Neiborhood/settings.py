@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Neiborhood.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awward',
+        'NAME': 'hood',
         'USER': 'wecode',
     'PASSWORD':'charlene',
     }

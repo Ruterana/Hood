@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns=[
     url('^$',views.home,name = 'home'),
+    url(r'^new/profile$', views.addprofile, name='profile'),
+    url(r'^new/viewprofile/(\d+)', views.viewprofile, name='viewprofile'),
     # url(r'^search/', views.search_results, name='search_results')
 ]
 if settings.DEBUG:
