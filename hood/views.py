@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.http  import HttpResponse
 from .forms import NewProfileForm
-from  .models import Profile
+from  .models import Profile,NeighbourHood
 # Create your views here.
 def home(request):
     return HttpResponse('Welcome to  the neiborhood app')
@@ -32,6 +32,7 @@ def viewprofile(request,profile_id):
     
     return render(request,'viewprofile.html',{'profile':profile})
 @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def edit_profile(request):
    current_user=request.user
    if request.method =='POST':
@@ -43,11 +44,10 @@ def edit_profile(request):
            profile=form.save(commit=False)
            profile.username=current_user
            profile.save()
-           return redirect('viewprofile', current_user.id,pk=pk)
-           
+           return redirect('viewprofile', current_user.id)
    else:
        if Profile.objects.filter(user_id = current_user).exists():
            form=NewProfileForm(instance =Profile.objects.get(user_id=current_user))
        else:
            form=NewProfileForm()
-   return render(request,'edit_profile.html',{"form":form})  
+   return render(request,'edit_profile.html',{"form":form})   
