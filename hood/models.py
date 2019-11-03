@@ -6,8 +6,8 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to = 'pictures/')
     bio= models.CharField(max_length=30)
     user= models.OneToOneField(User,on_delete=models.CASCADE)
-    username= models.CharField(max_length=30)
-    location = models.CharField(max_length=33)
+    username= models.CharField(max_length=32)
+    location = models.CharField(max_length=32)
     neighbourhood = models.CharField(max_length=32,null= True)
 def save_profile(self):
         self.save()
@@ -23,11 +23,8 @@ def __str__(self):
 
 def save_post(self):
         self.save() 
-
-def delete_neighbourhood(self):
-        self.delete()  
-    
 class NeighbourHood(models.Model):
+    image_path = models.ImageField(upload_to = 'pictures/')
     name = models.CharField(max_length=30)
     location= models.CharField(max_length=32)
     count  = models.IntegerField(default=0)
@@ -39,3 +36,17 @@ def save_neighbourhood(self):
 
 def delete_neighbourhood(self):
         self.delete()  
+
+class Business(models.Model):
+      owner = models.CharField(max_length=30)
+      business_name= models.CharField(max_length=32)
+      business_email =models.EmailField(max_length=300)
+      description= models.TextField(max_length=300)
+      location = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE) 
+      user = models.ForeignKey(User,on_delete=models.CASCADE) 
+    
+def create_business(self):
+        self.save()
+      
+def delete_business(self):
+        self.delete()
