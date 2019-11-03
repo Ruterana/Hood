@@ -5,11 +5,12 @@ from django.http  import HttpResponse
 from .forms import NewProfileForm
 from  .models import Profile,NeighbourHood
 # Create your views here.
+
 def home(request):
-    return HttpResponse('Welcome to  the neiborhood app')
-def home(request):
-    return render(request, 'home.html')
-# @login_required(login_url='/accounts/login/')
+    hoods = NeighbourHood.objects.all()
+    return render(request,'home.html',{"hoods":hoods})
+    
+@login_required(login_url='/accounts/login/')
 @login_required(login_url='/accounts/login/')
 def addprofile(request):
     current_user = request.user
