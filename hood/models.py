@@ -50,3 +50,5 @@ def create_business(self):
       
 def delete_business(self):
         self.delete()
+def __str__(self):
+    return self.location

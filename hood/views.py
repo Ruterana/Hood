@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.http  import HttpResponse
-from .forms import NewProfileForm
+from .forms import NewProfileForm,NewbusinessForm
 from  .models import Profile,NeighbourHood,Business
 
 # Create your views here.
@@ -54,3 +54,19 @@ def edit_profile(request):
        else:
            form=NewProfileForm()
    return render(request,'edit_profile.html',{"form":form})   
+@login_required(login_url='/accounts/login/')
+def business(request):
+    
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewbusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.user = current_user
+            
+            business.save()
+        return redirect('home')
+
+    else:
+        form = NewbusinessForm()
+    return render(request, 'business.html', {"form": form})
