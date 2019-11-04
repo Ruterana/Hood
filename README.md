@@ -1,4 +1,4 @@
-# projectname
+<!-- # projectname
 Neibourhood
 ## Author
 Charlene Niyitanga
@@ -11,7 +11,7 @@ Python
 Django
 Postgres
 Boostrap3
-Heroku for deployment 
+Heroku for deployment  -->
 
 ##  User Stories
 Admin is only one who is able to add new Neibourhood and other information related to  it
