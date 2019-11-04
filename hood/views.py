@@ -72,9 +72,9 @@ def business(request):
     return render(request, 'business.html', {"form": form})
 @login_required(login_url='/accounts/login/')
 def viewbusiness(request,location_id):
-    hoods = Business.objects.all()
-    b = Business.objects.filter(user = current_user).first()
-    return render(request,'viewbusiness.html',{"hoods":hoods})
+    bb = Business.objects.all()
+    b = Business.objects.filter(location = location.id).first()
+    return render(request,'viewbusiness.html',{"bb":bb})
     
     
     
