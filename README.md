@@ -10,6 +10,7 @@ HTML and CSS
 Python
 Django
 Postgres
+Boostrap
 Heroku for deployment 
 ## Contact information.
 for any suggestion or idear or any issues please contact me on my email:ncharlene38@gmail.com 
