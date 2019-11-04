@@ -10,7 +10,7 @@ HTML and CSS
 Python
 Django
 Postgres
-Boostrap
+Boostrap3
 Heroku for deployment 
 
 ##  User Stories
