@@ -34,7 +34,7 @@ def viewprofile(request,profile_id):
     
     return render(request,'viewprofile.html',{'profile':profile})
     return redirect('profile:viewprofile',pk=pk)
-@login_required(login_url='/accounts/login/')
+
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
    current_user=request.user
@@ -70,3 +70,11 @@ def business(request):
     else:
         form = NewbusinessForm()
     return render(request, 'business.html', {"form": form})
+@login_required(login_url='/accounts/login/')
+def viewbusiness(request,location_id):
+    hoods = Business.objects.all()
+    b = Business.objects.filter(user = current_user).first()
+    return render(request,'viewbusiness.html',{"hoods":hoods})
+    
+    
+    
